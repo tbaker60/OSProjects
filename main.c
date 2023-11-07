@@ -6,8 +6,8 @@
 #include <semaphore.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include <producer.h>
-#include <consumer.h>
+#include "producer.h"
+#include "consumer.h"
 
 #define BUFFER_SIZE 5
 #define MAX_ITEMS 20
