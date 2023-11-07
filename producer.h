@@ -1,11 +1,5 @@
 // Toby Baker
 // OS Proj 1 producer file
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
 
 // MAKE SURE YOU ADD COMMENTS TO THIS CODE
 
