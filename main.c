@@ -1,5 +1,11 @@
 // Toby Baker
 // OS Project 1 main file
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 #include <producer.h>
 #include <consumer.h>
 
