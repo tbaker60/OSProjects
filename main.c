@@ -9,6 +9,7 @@
 #include "producer.h"
 #include "consumer.h"
 
+// These need to be put in shared mem
 sem_t mutex;
 sem_t full;
 sem_t empty;

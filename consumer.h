@@ -3,6 +3,8 @@
 #define BUFFER_SIZE 5
 #define MAX_ITEMS 20
 
+
+// These need stored in shared mem
 int buffer[BUFFER_SIZE];
 int in = 0;
 int out = 0;
