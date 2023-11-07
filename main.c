@@ -1,6 +1,20 @@
 // Toby Baker
 // OS Project 1 main file
+#include <producer.h>
+#include <consumer.h>
 
+#define BUFFER_SIZE 5
+#define MAX_ITEMS 20
+
+int buffer[BUFFER_SIZE];
+int in = 0;
+int out = 0;
+int produced_count = 0;
+int consumed_count = 0;
+
+sem_t mutex;
+sem_t full;
+sem_t empty;
 
 int main(){
     pthread_t producerThread, consumerThread;
