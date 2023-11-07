@@ -2,7 +2,14 @@
 // OS Proj 1 producer file
 
 // MAKE SURE YOU ADD COMMENTS TO THIS CODE
+#define BUFFER_SIZE 5
+#define MAX_ITEMS 20
 
+int buffer[BUFFER_SIZE];
+int in = 0;
+int out = 0;
+int produced_count = 0;
+int consumed_count = 0;
 
 
 void* producer(void* arg) {
