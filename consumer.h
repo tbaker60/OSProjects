@@ -1,14 +1,5 @@
 // Toby Baker
 // OS Project 1 Consumer file
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
-
-#define BUFFER_SIZE 5
-#define MAX_ITEMS 20
 
 void* consumer(void* arg) {
     while(consumed_count < MAX_ITEMS) {
