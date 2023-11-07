@@ -7,20 +7,9 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#define BUFFER_SIZE 5
-#define MAX_ITEMS 20
-
 // MAKE SURE YOU ADD COMMENTS TO THIS CODE
 
-int buffer[BUFFER_SIZE];
-int in = 0;
-int out = 0;
-int produced_count = 0;
-int consumed_count = 0;
 
-sem_t mutex;
-sem_t full;
-sem_t empty;
 
 void* producer(void* arg) {
    int item = 1;
