@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 #define BUFFER_SIZE 5
 #define MAX_ITEMS 20
