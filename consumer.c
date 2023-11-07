@@ -5,7 +5,6 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-int main (){
-
+int main() {
 
 }
