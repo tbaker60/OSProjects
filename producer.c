@@ -42,6 +42,7 @@ void* producer(void* arg) {
 }
 
 int main(){
+    pthread_t producerThread, consumerThread;
     int item = 1;
     sem_init(&mutex, 1, 1);
     sem_init(&full, 1, 0);
