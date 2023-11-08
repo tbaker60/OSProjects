@@ -15,9 +15,9 @@
 // These need to be put in shared mem
 int shm_open(const char *sharedMem, int oflag, mode_t mode);
 
-int main(){
+int main(int argc, char *argv[]){
     int    fd;
-    char   *shmpath = "/sharedMem";
+    char   *shmpath = argv[1];
     struct shmbuf *shmp;
     
     fd = shm_open(shmpath, O_CREAT | O_EXCL | O_RDWR, 0600);
