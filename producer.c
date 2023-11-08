@@ -27,7 +27,7 @@ int main() {
    if (sem_init(&shmptr->empty, 1, BUFFER_SIZE) == -1)
         errExit("sem_init-empty");
 
-   pthread_create(&producerThread, NULL, "./producer", NULL);
+   pthread_create(&producerThread, NULL, NULL, NULL);
    pthread_join(producerThread, NULL);
 
    while (produced_count < MAX_ITEMS) {

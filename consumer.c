@@ -19,7 +19,7 @@ int main() {
     if (sem_init(&shmp->empty, 1, BUFFER_SIZE) == -1)
         errExit("sem_init-empty");
 
-    pthread_create(&consumerThread, NULL, consumer, NULL);
+    pthread_create(&consumerThread, NULL, NULL, NULL);
     pthread_join(consumerThread, NULL);
 
     while(consumed_count < MAX_ITEMS) {
