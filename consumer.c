@@ -5,8 +5,10 @@
 int main() {
     pthread consumerThread;
     struct shmbuf *shmptr;
-
     int shm_fd;
+
+    int consumed_count = 0;
+    int out = 0;
 
     shm_fd = shm_open(NAME, O_CREAT | O_RDWR, 0600);
 
