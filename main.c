@@ -12,10 +12,11 @@
 #include <ctype.h>
 #include "header.h"
 
-// These need to be put in shared mem
 int shm_open(const char *sharedMem, int oflag, mode_t mode);
 
 int main(int argc, char *argv[]){
+    pthread_t producerThread, consumerThread;
+
     int    fd;
     char   *shmpath = argv[1];
     struct shmbuf *shmp;
@@ -36,6 +37,12 @@ int main(int argc, char *argv[]){
     if (sem_init(&shmp->empty, 1, BUFFER_SIZE) == -1)
         errExit("sem_init-empty");
 
+    pthread_create(&producerThread, NULL, producer, NULL);
+    pthread_create(&consumerThread, NULL, consumer, NULL);
+
+    pthread_join(producerThread, NULL);
+    pthread_join(consumerThread, NULL);
+
     if (sem_wait(&shmp->mutex) == -1)
         errExit("sem_wait");
     
@@ -49,7 +56,6 @@ int main(int argc, char *argv[]){
     sem_destroy(&shmp->full);
     sem_destroy(&shmp->empty);
 
-    //int shm_unlink(const char *sharedMem);
     shm_unlink(shmpath);
     exit(EXIT_SUCCESS);
 }
