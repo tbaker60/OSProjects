@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
     if (sem_init(&shmp->empty, 1, BUFFER_SIZE) == -1)
         errExit("sem_init-empty");
 
-    pthread_create(&producerThread, NULL, producer, NULL);
+    pthread_create(&producerThread, NULL, &shmp, NULL);
     pthread_create(&consumerThread, NULL, consumer, NULL);
 
     pthread_join(producerThread, NULL);
