@@ -22,18 +22,32 @@ int main(){
     fd = shm_open(shmpath, O_CREAT | O_EXCL | O_RDWR, 0600);
     if (fd == -1)
         errExit("shm_open");
+    if (ftruncate(fd, sizeof(struct shmbuf)) == -1)
+        rrExit("ftruncate");
     shmp = mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if (shmp == MAP_FAILED)
+        errExit("mmap");
     
-    int item = 1;
-    sem_init(&shmp->mutex, 1, 1);
-    sem_init(&shmp->full, 1, 0);
-    sem_init(&shmp->empty, 1, BUFFER_SIZE);  
+    if (sem_init(&shmp->mutex, 1, 1) == -1)
+        errExit("sem_init-mutex");
+    if (sem_init(&shmp->full, 1, 0) == -1)
+        errExit("sem_init-full");
+    if (sem_init(&shmp->empty, 1, BUFFER_SIZE) == -1)
+        errExit("sem_init-empty");
 
-
+    if (sem_wait(&shmp->mutex) == -1)
+        errExit("sem_wait");
+    
+    for (size_t j = 0; j < shmp->cnt; j++)
+        shmp->buf[j] = toupper((unsigned char) shmp->buf[j]);
+    
+    if (sem_post(&shmp->full) == -1 || sem_post(&shmp->empty) == -1)
+        errExit("sem_post");
+    
     sem_destroy(&shmp->mutex);
     sem_destroy(&shmp->full);
     sem_destroy(&shmp->empty);
 
     int shm_unlink(const char *sharedMem);
-    return 0;
-};
+    exit(EXIT_SUCCESS);
+}
