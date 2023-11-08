@@ -15,7 +15,7 @@
 // These need to be put in shared mem
 int shm_open(const char *sharedSems, int oflag, mode_t mode);
 
-#define errExit(msg)    do {perror(msg); exit(EXIT_FAILURE);} while (0)
+#define errExit(msg)    do {perror(msg); exit(EXIT_FAILURE);} while (0);
 
 #define BUF_SIZE 1024   /* Maximum size for exchanged string */
 
@@ -51,4 +51,4 @@ int main(){
 
     int shm_unlink(const char *sharedSems);
     return 0;
-}
+};

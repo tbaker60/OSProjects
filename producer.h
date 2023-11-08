@@ -13,7 +13,7 @@ int produced_count = 0;
 //int consumed_count = 0;
 
 
-void* producer(struct shmbuf *shmp) {
+void* producer(extern struct shmbuf *shmp) {
    int item = 1;
 
    while (produced_count < MAX_ITEMS) {
