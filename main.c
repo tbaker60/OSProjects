@@ -9,26 +9,10 @@
 #include <sys/mman.h>
 #include <sys/stat.h>        /* For mode constants */
 #include <fcntl.h>           /* For O_* constants */
-#include "producer.h"
-#include "consumer.h"
+#include "header.h"
 
 // These need to be put in shared mem
 int shm_open(const char *sharedSems, int oflag, mode_t mode);
-
-#define errExit(msg)    do {perror(msg); exit(EXIT_FAILURE);} while (0);
-
-#define BUF_SIZE 1024   /* Maximum size for exchanged string */
-
-/* Define a structure that will be imposed on the shared
-    memory object */
-
-struct shmbuf {
-    sem_t  mutex;            // POSIX mutex semaphore 
-    sem_t  full;             // POSIX full semaphore
-    sem_t  empty;            // POSIX empty semaphore
-    size_t cnt;             /* Number of bytes used in 'buf' */
-    int   buf[BUF_SIZE];    /* Data being transferred */
-};
 
 int main(){
     int fd;
