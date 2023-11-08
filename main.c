@@ -24,7 +24,7 @@ int main(){
     if (fd == -1)
         errExit("shm_open");
     if (ftruncate(fd, sizeof(struct shmbuf)) == -1)
-        rrExit("ftruncate");
+        errExit("ftruncate");
     shmp = mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if (shmp == MAP_FAILED)
         errExit("mmap");
