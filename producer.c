@@ -16,7 +16,7 @@ int main() {
    ftruncate(shm_fd, BUF_SIZE);
 
 
-   shptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
+   shmptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
 
    while (produced_count < MAX_ITEMS) {
       sem_wait(&shmptr->empty);
