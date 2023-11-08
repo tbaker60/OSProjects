@@ -27,15 +27,14 @@ struct shmbuf {
     sem_t  full;             // POSIX full semaphore
     sem_t  empty;            // POSIX empty semaphore
     size_t cnt;             /* Number of bytes used in 'buf' */
-    char   buf[BUF_SIZE];   /* Data being transferred */
+    int   buf[BUF_SIZE];    /* Data being transferred */
 };
 
 int main(){
     int fd;
-    char   *shmpath('sharedMem.txt');
     struct shmbuf *shmp;
     
-    fd = shm_open(shmpath, O_CREAT | O_EXCL | O_RDWR, 0600);
+    fd = shm_open(shmat, O_CREAT | O_EXCL | O_RDWR, 0600);
     if (fd == -1)
         errExit("shm_open");
     shmp = mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
@@ -43,7 +42,8 @@ int main(){
     int item = 1;
     sem_init(&shmp->mutex, 1, 1);
     sem_init(&shmp->full, 1, 0);
-    sem_init(&shmp->empty, 1, BUFFER_SIZE);
+    sem_init(&shmp->empty, 1, BUFFER_SIZE);  
+
 
     sem_destroy(&shmp->mutex);
     sem_destroy(&shmp->full);
