@@ -4,15 +4,16 @@
 
 int main() {
    int item = 1;
+   int in = 0;
    int produced_count = 0;
 
-   struct shmbuf shmp;
+   struct shmbuf *shmp;
 
    void *shptr;
 
-   shmp = shm.open(NAME, O_CREAT | O_RDWR, 0600);
+   shmp = shm_open(NAME, O_CREAT | O_RDWR, 0600);
 
-   ftruncate(shm_fd, BUF_SIZE);
+   ftruncate(shmp, BUF_SIZE);
 
 
    shptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shmp, 0);
@@ -21,16 +22,18 @@ int main() {
       sem_wait(&shmp->empty);
       sem_wait(&shmp->mutex);
 
-      sprintf(shptr, "%s", item);
-      shptr += strlen(item);
+      //sprintf(shptr, "%d", item);
+      shmp->buf[in] = item
+      //shptr += strlen(item);
       printf("Produced: %d", item);
       ++item;
       ++produced_count;
+      in = (in + 1) % BUFFER_SIZE;
 
       sem_post(&shmp->mutex);
       sem_post(&shmp->full);
    }
-   shm_unlink(NAME)
+   shm_unlink(NAME);
    return 0;
 }
 /*

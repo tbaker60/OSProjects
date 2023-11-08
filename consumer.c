@@ -9,9 +9,9 @@ int main() {
 
     void *shptr;
 
-    shmp = shm.open(NAME, O_CREAT | O_RDWR, 0600);
+    shmp = shm_open(NAME, O_CREAT | O_RDWR, 0600);
 
-    ftruncate(shm_fd, BUF_SIZE);
+    ftruncate(shmp, BUF_SIZE);
 
 
     shptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shmp, 0);
@@ -20,8 +20,9 @@ int main() {
         sem_wait(&shmp->full);
         sem_wait(&shmp->empty);
 
-        printf("Consumed: %d", (int *)shptr);
-        shptr += strlen((int *)shptr);
+        int item = shmp->buf[out];
+        printf("Consumed: %d", item);
+        out = (out + 1) % BUFFER_SIZE;
         ++consumed_count;
 
         sem_post(&shmp->mutex);
