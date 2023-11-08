@@ -9,6 +9,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>        /* For mode constants */
 #include <fcntl.h>           /* For O_* constants */
+#include <ctype.h>
 #include "header.h"
 
 // These need to be put in shared mem
