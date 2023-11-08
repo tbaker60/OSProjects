@@ -14,11 +14,11 @@ int main() {
 
     shmptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
     
-    if (sem_init(&shmp->mutex, 1, 1) == -1)
+    if (sem_init(&shmptr->mutex, 1, 1) == -1)
         errExit("sem_init-mutex");
-    if (sem_init(&shmp->full, 1, 0) == -1)
+    if (sem_init(&shmptr->full, 1, 0) == -1)
         errExit("sem_init-full");
-    if (sem_init(&shmp->empty, 1, BUFFER_SIZE) == -1)
+    if (sem_init(&shmptr->empty, 1, BUFFER_SIZE) == -1)
         errExit("sem_init-empty");
 
     pthread_create(&consumerThread, NULL, NULL, NULL);
