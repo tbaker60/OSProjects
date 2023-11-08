@@ -16,7 +16,7 @@ int shm_open(const char *sharedMem, int oflag, mode_t mode);
 
 int main(){
     int    fd;
-    char   *shmpath;
+    char   *shmpath = "/dev/shm";
     struct shmbuf *shmp;
     
     fd = shm_open(shmpath, O_CREAT | O_EXCL | O_RDWR, 0600);
@@ -43,7 +43,7 @@ int main(){
     
     if (sem_post(&shmp->full) == -1 || sem_post(&shmp->empty) == -1)
         errExit("sem_post");
-    
+
     sem_destroy(&shmp->mutex);
     sem_destroy(&shmp->full);
     sem_destroy(&shmp->empty);
