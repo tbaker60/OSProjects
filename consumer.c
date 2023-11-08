@@ -3,7 +3,7 @@
 #include "header.h"
 
 int main() {
-    pthread consumerThread;
+    pthread_t consumerThread;
     struct shmbuf *shmptr;
     int shm_fd;
 
