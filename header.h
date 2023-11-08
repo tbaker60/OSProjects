@@ -1,7 +1,16 @@
 // Toby Baker
 // OS Proj 1 Producer-Consumer problem header file
 //
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/mman.h>
+#include <sys/stat.h>        /* For mode constants */
+#include <fcntl.h>           /* For O_* constants */
+#include <ctype.h>
 
 // Shared mem setup
 ///////////////////////////
@@ -9,6 +18,7 @@
 #define BUF_SIZE 1024   /* Maximum size for exchanged string */
 #define MAX_ITEMS 20
 #define BUFFER_SIZE 5
+#define NAME "OS1"
 
 // Shared mem struct definition
 struct shmbuf {
