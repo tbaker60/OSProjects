@@ -8,6 +8,7 @@
 #define errExit(msg)    do {perror(msg); exit(EXIT_FAILURE);} while (0);
 #define BUF_SIZE 1024   /* Maximum size for exchanged string */
 #define MAX_ITEMS 20
+#define BUFFER_SIZE 5
 
 // Shared mem struct definition
 struct shmbuf {
@@ -62,7 +63,7 @@ void* consumer(struct shmbuf *shmp) {
         ++consumed_count;
 
         sem_post(&shmp->mutex);
-        sem_post(&eahmp->mpty);
+        sem_post(&shmp->empty);
     }
 
     pthread_exit(NULL);
