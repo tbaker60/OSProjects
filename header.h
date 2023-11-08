@@ -35,7 +35,7 @@ void* producer(struct shmbuf *shmp) {
       sem_wait(&shmp->empty);
       sem_wait(&shmp->mutex);
 
-      &shmp->buf[in] = item;
+      shmp->buf[in] = item;
       printf("Produced: %d", item);
       item++;
       in = (in + 1) % BUFFER_SIZE;
@@ -57,7 +57,7 @@ void* consumer(struct shmbuf *shmp) {
         sem_wait(&shmp->full);
         sem_wait(&shmp->empty);
 
-        int item = &shmp->buf[out];
+        int item = shmp->buf[out];
         printf("Consumed: %d", item);
         out = (out + 1) % BUFFER_SIZE;
         ++consumed_count;
