@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
     sem_destroy(&shmp->full);
     sem_destroy(&shmp->empty);
 
-    int shm_unlink(const char *sharedMem);
+    //int shm_unlink(const char *sharedMem);
     shm_unlink(shmpath);
     exit(EXIT_SUCCESS);
 }
