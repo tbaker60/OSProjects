@@ -11,9 +11,10 @@ int in = 0;
 //int out = 0;
 int produced_count = 0;
 //int consumed_count = 0;
+extern struct shmbuf *shmp;
 
 
-void* producer(extern struct shmbuf *shmp) {
+void* producer(struct shmbuf *shmp) {
    int item = 1;
 
    while (produced_count < MAX_ITEMS) {

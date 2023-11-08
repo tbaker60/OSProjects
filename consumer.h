@@ -10,8 +10,9 @@
 int out = 0;
 //int produced_count = 0;
 int consumed_count = 0;
+extern struct shmbuf *shmp;
 
-void* consumer(extern struct shmbuf *shmp) {
+void* consumer(struct shmbuf *shmp) {
     while(consumed_count < MAX_ITEMS) {
         sem_wait(&shmp->full);
         sem_wait(&shmp->empty);
