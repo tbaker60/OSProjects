@@ -30,7 +30,7 @@ int main() {
     shm_unlink(NAME);
     return 0;
 }
-
+/*
 void* consumer(struct shmbuf *shmp) {
     while(consumed_count < MAX_ITEMS) {
         sem_wait(&shmp->full);
@@ -47,3 +47,4 @@ void* consumer(struct shmbuf *shmp) {
 
     pthread_exit(NULL);
 }
+*/
