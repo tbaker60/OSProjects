@@ -15,10 +15,11 @@
 int shm_open(const char *sharedSemos, int oflag, mode_t mode);
 
 int main(){
-    int fd;
+    int    fd;
+    char   *shmpath;
     struct shmbuf *shmp;
     
-    fd = shm_open(&shmat, O_CREAT | O_EXCL | O_RDWR, 0600);
+    fd = shm_open(shmpath, O_CREAT | O_EXCL | O_RDWR, 0600);
     if (fd == -1)
         errExit("shm_open");
     shmp = mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
