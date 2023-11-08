@@ -12,7 +12,7 @@
 #include "header.h"
 
 // These need to be put in shared mem
-int shm_open(const char *sharedSemos, int oflag, mode_t mode);
+int shm_open(const char *sharedMem, int oflag, mode_t mode);
 
 int main(){
     int    fd;
@@ -34,6 +34,6 @@ int main(){
     sem_destroy(&shmp->full);
     sem_destroy(&shmp->empty);
 
-    int shm_unlink(const char *sharedSemos);
+    int shm_unlink(const char *sharedMem);
     return 0;
 };
