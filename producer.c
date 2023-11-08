@@ -7,31 +7,31 @@ int main() {
    int in = 0;
    int produced_count = 0;
 
-   struct shmbuf *shmp;
+   struct shmbuf *shmptr;
 
-   void *shptr;
+   int shm_fd;
 
-   shmp = shm_open(NAME, O_CREAT | O_RDWR, 0600);
+   shm_fd = shm_open(NAME, O_CREAT | O_RDWR, 0600);
 
-   ftruncate(shmp, BUF_SIZE);
+   ftruncate(shm_fd, BUF_SIZE);
 
 
-   shptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shmp, 0);
+   shptr = mmap(0, BUF_SIZE, PROT_WRITE, MAP_SHARED, shm_fd, 0);
 
    while (produced_count < MAX_ITEMS) {
-      sem_wait(&shmp->empty);
-      sem_wait(&shmp->mutex);
+      sem_wait(&shmptr->empty);
+      sem_wait(&shmptr->mutex);
 
       //sprintf(shptr, "%d", item);
-      shmp->buf[in] = item
+      shmptr->buf[in] = item;
       //shptr += strlen(item);
       printf("Produced: %d", item);
       ++item;
       ++produced_count;
       in = (in + 1) % BUFFER_SIZE;
 
-      sem_post(&shmp->mutex);
-      sem_post(&shmp->full);
+      sem_post(&shmptr->mutex);
+      sem_post(&shmptr->full);
    }
    shm_unlink(NAME);
    return 0;
