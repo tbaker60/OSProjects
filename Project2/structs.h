@@ -4,9 +4,9 @@ struct Process {
   int alloc[3];
   int maxAlloc[3];
   
-}
+};
 
 struct Resource {
   int count;
   int max;
-}
+};
