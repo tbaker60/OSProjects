@@ -20,7 +20,7 @@ int main() {
     while (j < 6){
       if (j<3) {
         processes[cnt]->alloc[j];
-        availResources[j] -= fileArr[i];
+        availResources[j] -= (fileArr[i]-48);
       }
       else processes[cnt]->maxAlloc[j-3];
       if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
