@@ -3,3 +3,7 @@
 3,0,2,9,0,2;
 2,1,1,2,2,2;
 0,0,2,4,3,3;
+
+# Data is stored so that each line indicates data for a process. First line is P0, next is P1, next is P2, etc.
+# First 3 numbers are the allocations of each resource for a given process. 1st num is for A, 2nd is for B, 3rd is for C.
+# Last 3 numbers are the max allocations of each resource for a given process. 4th is for A, 5th is for B, 6th is for C.
