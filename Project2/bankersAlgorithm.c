@@ -1,13 +1,15 @@
-#include "structs.h"
+#include <stdio.h>
 FILE *fptr;
 
 int main() {
   // Will be used to keep track of available resources as they are read in 
   int availResources[3] = {10,5,7};
   // Used to keep track of process's resource allocation
-  struct Process processes[5]; 
+  int processes[5][3];
+  int maxAlloc[5][3]; 
 
-  // Opening up file and reading data
+  // Opening up file and reading data into structs
+  ////////////////////////////////////////////////////////////
   fptr = fopen("inputData.txt", "r");
   
   // while not at end of file, read in new lines
@@ -21,14 +23,14 @@ int main() {
     while (j < 6){
       //printf("\n");
       if (j<3 && fileArr[i]>= 48) {
-        processes[cnt].alloc[j] = (fileArr[i]-48);
+        processes[cnt][j] = (fileArr[i]-48);
         availResources[j] -= (fileArr[i]-48);
         /* // Testing for allocation assignments to processes
         printf("%i", (fileArr[i]-48)); 
         printf("  ");
         */
       }
-      else processes[cnt].maxAlloc[j-3];
+      else maxAlloc[cnt][j-3] = (fileArr[i]-48);
       if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
       ++i;
     }
@@ -39,8 +41,11 @@ int main() {
   printf("%i", availResources[1]); printf("/");
   printf("%i", availResources[2]); printf("\n");
   */
-  // Everything else
- 
+
+  // Implementing Banker's Algorithm
+  ///////////////////////////////////////////////////////
+
+
   printf("Safe sequence: ");
   return 0;
 }
