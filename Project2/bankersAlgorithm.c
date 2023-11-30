@@ -19,7 +19,7 @@ int main() {
     int j = 0;  // tracks number of integers read in
     while (j < 6){
       if (j<3) {
-        processes[cnt]->alloc[j] = (fileArr[i]-48);
+        processes[cnt].alloc[j] = (fileArr[i]-48);
         availResources[j] -= (fileArr[i]-48);
         printf("hi\n");
         printf("%i", (fileArr[i]-48)); 
