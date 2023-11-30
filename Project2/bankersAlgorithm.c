@@ -24,7 +24,7 @@ int main() {
         printf("hi\n");
         printf("%i", (fileArr[i]-48)); 
       }
-      else processes[cnt]->maxAlloc[j-3];
+      else processes[cnt].maxAlloc[j-3];
       if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
       ++i;
     }
