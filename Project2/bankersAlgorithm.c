@@ -8,7 +8,7 @@ int main() {
 
   // Opening up file and reading data
   fptr = fopen("inputData.txt", "r");
-  int cnt = 0;
+  
   // while not at end of file, read in new lines
   for(int k=0; k<5; ++k){
     char fileArr[20];
@@ -26,7 +26,6 @@ int main() {
       if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
       ++i;
     }
-    ++cnt;  // incrementing line counter. Each input line is process data
   }
   fclose(fptr);
 
