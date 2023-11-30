@@ -21,7 +21,7 @@ int main() {
       if (j<3) {
         processes[cnt].alloc[j] = (fileArr[i]-48);
         availResources[j] -= (fileArr[i]-48);
-        printf("hi\n");
+        printf("  ");
         printf("%i", (fileArr[i]-48)); 
       }
       else processes[cnt].maxAlloc[j-3];
