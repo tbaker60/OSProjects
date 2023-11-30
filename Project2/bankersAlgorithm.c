@@ -29,7 +29,9 @@ int main() {
   }
   fclose(fptr);
 
-  printf(availResources, "i");
+  printf(availResources[0]);
+  printf(availResources[1]);
+  printf(availResources[2]);
   // Everything else
  
   printf("Safe sequence: ");
