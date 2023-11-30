@@ -18,7 +18,7 @@ int main() {
     int i = 0;  // tracks index of character array for this line
     int j = 0;  // tracks number of integers read in
     while (j < 6){
-      if (j<3) {
+      if (j<3 && fileArr[i]>= 48) {
         processes[cnt].alloc[j] = (fileArr[i]-48);
         availResources[j] -= (fileArr[i]-48);
         printf("  ");
