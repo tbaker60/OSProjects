@@ -3,17 +3,18 @@ FILE *fptr;
 
 int main() {
   // Will be used to keep track of available resources as they are read in 
-  int availResources[3] = [10,5,7];
-  Process *processes[5]; 
+  int availResources[3] = {10,5,7};
+  struct Process *processes[5]; 
 
   // Opening up file and reading data
   fptr = fopen("inputData.txt", "r");
   int cnt = 0;
   // while not at end of file, read in new lines
-  while (!feof(stdin)){
+  for(int k=0; k<5; ++k){
     char fileArr[20];
     fgets(fileArr, 20, fptr);
-    printf("Input Data Line: ", "%s", fileArr);
+    printf("Input Data Line: ");
+    printf("%s", fileArr);
     int i = 0;  // tracks index of character array for this line
     int j = 0;  // tracks number of integers read in
     while (j < 6){
@@ -32,5 +33,5 @@ int main() {
   // Everything else
  
   printf("Safe sequence: ");
-  return;
+  return 0;
 }
