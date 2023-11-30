@@ -4,7 +4,7 @@ FILE *fptr;
 int main() {
   // Will be used to keep track of available resources as they are read in 
   int availResources[3] = {10,5,7};
-  struct Process *processes[5]; 
+  struct Process processes[5]; 
 
   // Opening up file and reading data
   fptr = fopen("inputData.txt", "r");
