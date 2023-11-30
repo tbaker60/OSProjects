@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 struct Process {
 // Arrays for storing allocation values
 // first index is allocations for A, second is B, etc.
