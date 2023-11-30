@@ -31,7 +31,7 @@ int main() {
 
   printf("%i", availResources[0]); printf("/");
   printf("%i", availResources[1]); printf("/");
-  printf("%i", availResources[2]); printf("/");
+  printf("%i", availResources[2]); printf("\n");
   // Everything else
  
   printf("Safe sequence: ");
