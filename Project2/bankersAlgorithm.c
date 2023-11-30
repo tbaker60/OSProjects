@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 FILE *fptr;
 const int n = 5;  // num of processes
 const int m = 3;  // num of resources
@@ -78,19 +79,19 @@ int main() {
         }
     }
    
-      bool safe = TRUE;
+      bool safe = true;
        
       for(int i=0;i<n;i++)
     {
       if(f[i] == 0)
       {
-        safe = FALSE;
+        safe = false;
          printf("The following system is not safe");
         break;
       }
     }
      
-      if(safe == TRUE)
+      if(safe == true)
     {
       printf("Safe sequence: ");
       for (i = 0; i < n - 1; i++)
