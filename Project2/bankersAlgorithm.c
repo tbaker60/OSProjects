@@ -21,7 +21,7 @@ int main() {
       if (j<3) {
         processes[cnt]->alloc[j] = (fileArr[i]-48);
         availResources[j] -= (fileArr[i]-48);
-        printf(fileArr[i]-48); 
+        printf("%i", (fileArr[i]-48)); 
       }
       else processes[cnt]->maxAlloc[j-3];
       if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
