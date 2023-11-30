@@ -1,3 +1,4 @@
+#include "structs.h"
 FILE *fptr;
 
 int main() {
