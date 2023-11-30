@@ -29,9 +29,9 @@ int main() {
   }
   fclose(fptr);
 
-  printf(availResources[0]);
-  printf(availResources[1]);
-  printf(availResources[2]);
+  printf("%i", availResources[0]);
+  printf("%i", availResources[1]);
+  printf("%i", availResources[2]);
   // Everything else
  
   printf("Safe sequence: ");
