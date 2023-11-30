@@ -3,8 +3,8 @@
 struct Process {
 // Arrays for storing allocation values
 // first index is allocations for A, second is B, etc.
-  int alloc[3];
-  int maxAlloc[3];
+  *int alloc[3];
+  *int maxAlloc[3];
   
 };
 
