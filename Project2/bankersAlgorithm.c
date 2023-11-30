@@ -13,7 +13,8 @@ int main() {
   fptr = fopen("inputData.txt", "r");
   
   // while not at end of file, read in new lines
-  for(int cnt=0; cnt<5; ++cnt){
+  int cnt;
+  for(cnt=0; cnt<5; ++cnt){
     char fileArr[20];
     fgets(fileArr, 20, fptr);
     printf("Input Data Line: ");
