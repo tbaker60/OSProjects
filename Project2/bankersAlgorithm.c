@@ -7,7 +7,7 @@ const int m = 3;  // num of resources
 int main() {
   // Will be used to keep track of available resources as they are read in 
   int availResources[3] = {10,5,7};
-  // Used to keep track of process's resource allocation
+  // Used to keep track of processes' resource allocation
   int procAlloc[n][m];
   int maxAlloc[n][m]; 
 
@@ -16,25 +16,29 @@ int main() {
   fptr = fopen("inputData.txt", "r");
   
   // while not at end of file, read in new lines
-  for(int cnt=0; cnt<n; ++cnt){
+  for(int cnt=0; cnt<n; ++cnt){ // cnt tracks which process/line of input file we're on
     char fileArr[20];
     fgets(fileArr, 20, fptr);
-    printf("Input Data Line: ");
-    printf("%s", fileArr);
+    //printf("Input Data Line: ");
+    //printf("%s", fileArr);
     int i = 0;  // tracks index of character array for this line
     int j = 0;  // tracks number of integers read in
-    while (j < (2*m)){
+
+    while (j < (2*m)){  // while reading a number less than the width of the matrix(2*m)
       //printf("\n");
-      if (j<m && fileArr[i]>= 48) {
-        procAlloc[cnt][j] = (fileArr[i]-48);
-        availResources[j] -= (fileArr[i]-48);
+      if (j<m && fileArr[i]>= 48) { // if reading from first half of the input line (actual allocation data)
+        procAlloc[cnt][j] = (fileArr[i]-48);  // populate process's allocation data
+        availResources[j] -= (fileArr[i]-48); // decrease availability based on what is being used
+
         /* // Testing for allocation assignments to processes
         printf("%i", (fileArr[i]-48)); 
         printf("  ");
         */
       }
+      // else reading from second half of input line (max allocation data)
       else maxAlloc[cnt][j-m] = (fileArr[i]-48);
-      if (fileArr[i] == ',' || fileArr[i] == ';') ++j;
+
+      if (fileArr[i] == ',' || fileArr[i] == ';') ++j;  // if reading a delimiter, increment j to signify we're on a new piece of data
       ++i;
     }
   }
@@ -86,7 +90,7 @@ int main() {
       if(f[i] == 0)
       {
         safe = false;
-         printf("The following system is not safe");
+         printf("This system is not safe\n");
         break;
       }
     }
@@ -97,12 +101,8 @@ int main() {
       for (int i = 0; i < n - 1; i++)
         printf(" P%d ->", ans[i]);
       printf(" P%d", ans[n - 1]);
+      printf("\n");
     }
 
-
-
-
-
-  
   return 0;
 }
