@@ -7,7 +7,7 @@ const int m = 3;  // num of resources
 int main() {
   // Will be used to keep track of available resources as they are read in 
   int availResources[m];
-  availResources[m] = {10,5,7};
+  availResources = {10,5,7};
   // Used to keep track of process's resource allocation
   int procAlloc[n][m];
   int maxAlloc[n][m]; 
