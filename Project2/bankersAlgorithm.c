@@ -56,6 +56,7 @@ int main() {
         f[k] = 0;
     }
     int need[n][m];
+    // checking if needs are possible
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++)
             need[i][j] = maxAlloc[i][j] - procAlloc[i][j];
@@ -67,7 +68,8 @@ int main() {
  
                 int flag = 0;
                 for (int j = 0; j < m; j++) {
-                    if (need[i][j] > availResources[j]){
+                    // checking if need exceeds what is available 
+                    if (need[i][j] > availResources[j]){ 
                         flag = 1;
                          break;
                     }
@@ -76,6 +78,7 @@ int main() {
                 if (flag == 0) {
                     ans[ind++] = i;
                     for (int y = 0; y < m; y++)
+                        // adjusting availability based on allocation
                         availResources[y] += procAlloc[i][y];
                     f[i] = 1;
                 }
